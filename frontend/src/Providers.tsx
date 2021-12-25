@@ -1,7 +1,8 @@
 import React from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
-import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
+import { StyledEngineProvider } from "@mui/material/styles";
+import { ThemeProvider } from '@emotion/react'
 import { light, dark } from './theme'
 import { useThemeManager } from "./state/user/hooks";
 import store from "./state";

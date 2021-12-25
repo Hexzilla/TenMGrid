@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, TextField } from "@mui/material";
-import { indigo, red } from "@mui/material/colors";
+import { Button, TextField, Typography } from "@mui/material";
 import "./style.css";
 
 export default function Signup() {
   return (
     <div className="login">
+      <Typography variant="h4">Create Your Account</Typography>
       <form className="form">
         <TextField
           className="form-control"

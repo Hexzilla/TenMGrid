@@ -1,13 +1,27 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, TextField } from "@mui/material";
-import { indigo, red } from "@mui/material/colors";
+import {
+  Button,
+  TextField,
+  Typography,
+  FormControl,
+  InputLabel,
+  Input,
+  FormHelperText,
+} from "@mui/material";
 import "./style.css";
 
 export default function Login() {
   return (
     <div className="login">
+      <Typography variant="h4">TenMGrid Account Login</Typography>
       <form className="form">
+        {/* <FormControl>
+          <InputLabel htmlFor="my-input">Email address</InputLabel>
+          <Input id="my-input" aria-describedby="my-helper-text" />
+          <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
+        </FormControl> */}
+
         <TextField
           className="form-control"
           fullWidth

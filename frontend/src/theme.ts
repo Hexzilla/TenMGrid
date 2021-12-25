@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { red, indigo } from '@mui/material/colors';
+import { red, indigo, amber } from '@mui/material/colors';
 
 // A light theme for this app
 export const light = createTheme({
@@ -19,6 +19,9 @@ export const light = createTheme({
 // A dark theme for this app
 export const dark = createTheme({
   palette: {
-    mode: 'dark'
+    mode: 'dark',
+    primary: {
+      main: amber[500],
+    },
   },
 });
