@@ -4,17 +4,18 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
-import Grid from '@mui/material/Grid';
-import FormLabel from '@mui/material/FormLabel';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import RadioGroup from '@mui/material/RadioGroup';
-import Radio from '@mui/material/Radio';
-import Paper from '@mui/material/Paper';
+import Grid from "@mui/material/Grid";
+import FormLabel from "@mui/material/FormLabel";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import RadioGroup from "@mui/material/RadioGroup";
+import Radio from "@mui/material/Radio";
+import Paper from "@mui/material/Paper";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import "./style.css";
 
 export default function Home(props: any) {
-  console.log('home', props);
+  console.log("home", props);
   const seats: Array<number> = [];
   for (let i = 0; i < 54; i++) {
     seats.push(i);
@@ -32,7 +33,9 @@ export default function Home(props: any) {
           <Grid container justifyContent="center" spacing={2}>
             {seats.map((value) => (
               <Grid key={value} item>
-                <Paper sx={{ height: 100, width: 100 }} />
+                <Paper sx={{ height: 100, width: 100 }} className="gridItem" >
+                  <LockOutlinedIcon />
+                </Paper>
               </Grid>
             ))}
           </Grid>

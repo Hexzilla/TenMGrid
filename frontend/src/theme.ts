@@ -1,11 +1,11 @@
 import { createTheme } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
+import { red, indigo } from '@mui/material/colors';
 
 // A light theme for this app
 export const light = createTheme({
   palette: {
     primary: {
-      main: '#1FC7D4',
+      main: indigo[500],//'#1FC7D4',
     },
     secondary: {
       main: '#19857b',

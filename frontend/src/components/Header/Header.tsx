@@ -10,7 +10,7 @@ export default function Header() {
   console.log('isDark', isDark)
 
   return (
-    <AppBar position="fixed" color="secondary" style={{ padding: "0 20px" }}>
+    <AppBar position="fixed" style={{ padding: "0 20px" }}>
       <Toolbar disableGutters={true} className="toolbarRoot">
         <IconButton
           color="inherit"
