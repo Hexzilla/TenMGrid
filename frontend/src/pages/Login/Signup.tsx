@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button, TextField } from "@mui/material";
 import { indigo, red } from "@mui/material/colors";
 import "./style.css";
@@ -44,17 +45,16 @@ export default function Signup() {
           SIGN UP
         </Button>
       </form>
-      <div>
+      <Link to="/login" style={{ textDecoration: "none" }}>
         <Button
-          onClick={() => console.log("Signup")}
           style={{
             textTransform: "initial",
-            color: indigo[500],
+            color: "white",
           }}
         >
-          Don't have an account?
+          You have already account? Login
         </Button>
-      </div>
+      </Link>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button, TextField } from "@mui/material";
 import { indigo, red } from "@mui/material/colors";
-import './style.css'
+import "./style.css";
 
 export default function Login() {
   return (
@@ -12,44 +13,44 @@ export default function Login() {
           fullWidth
           id="email"
           label="Email"
-          variant="outlined"/>
+          variant="outlined"
+        />
         <TextField
           className="form-control"
           fullWidth
           id="password"
           label="Password"
-          variant="outlined" />
+          variant="outlined"
+        />
         <Button
           className="form-control"
           fullWidth
           color="primary"
-          variant="contained">
+          variant="contained"
+        >
           Login
         </Button>
       </form>
-      <div>
-          <Button
-            onClick={() => console.log("Forgot Password")}
-            style={{
-              textTransform: "initial",
-              marginTop: "16px",
-              color: indigo[500]
-            }}
-          >
-            Forgot Password?
-          </Button>
-        </div>
-        <div>
-          <Button
-            onClick={() => console.log("Signup")}
-            style={{
-              textTransform: "initial",
-              color: indigo[500]
-            }}
-          >
-            Don't have an account?
-          </Button>
-        </div>
+      <Link to="/register" style={{ textDecoration: "none" }}>
+        <Button
+          style={{
+            textTransform: "initial",
+            color: "white",
+          }}
+        >
+          Forgot Password
+        </Button>
+      </Link>
+      <Link to="/register" style={{ textDecoration: "none" }}>
+        <Button
+          style={{
+            textTransform: "initial",
+            color: "white",
+          }}
+        >
+          Don't have an account?
+        </Button>
+      </Link>
     </div>
   );
 }
