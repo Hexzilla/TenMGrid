@@ -1,7 +1,11 @@
 {
-  "name": "my-app",
+  "name": "TenMGrid",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DoubleNibble/TenMGrid.git"
+  },
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
