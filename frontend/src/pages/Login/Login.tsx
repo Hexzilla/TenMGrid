@@ -1,20 +1,17 @@
-import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Button,
   TextField,
   Typography,
-  FormControl,
-  InputLabel,
-  Input,
-  FormHelperText,
 } from "@mui/material";
 import "./style.css";
 
 export default function Login() {
   return (
     <div className="login">
-      <Typography variant="h4">TenMGrid Account Login</Typography>
+      <Typography variant="h4" sx={{ mb: 6 }}>
+        TenMGrid Account Login
+      </Typography>
       <form className="form">
         {/* <FormControl>
           <InputLabel htmlFor="my-input">Email address</InputLabel>
@@ -23,25 +20,20 @@ export default function Login() {
         </FormControl> */}
 
         <TextField
-          className="form-control"
           fullWidth
           id="email"
           label="Email"
           variant="outlined"
+          sx={{ mb: 2 }}
         />
         <TextField
-          className="form-control"
           fullWidth
           id="password"
           label="Password"
           variant="outlined"
+          sx={{ mb: 4 }}
         />
-        <Button
-          className="form-control"
-          fullWidth
-          color="primary"
-          variant="contained"
-        >
+        <Button fullWidth color="primary" variant="contained" sx={{ mb: 4 }}>
           Login
         </Button>
       </form>

@@ -6,41 +6,43 @@ import "./style.css";
 export default function Signup() {
   return (
     <div className="login">
-      <Typography variant="h4">Create Your Account</Typography>
+      <Typography variant="h4" sx={{ mb: 6 }}>
+        Create Your Account
+      </Typography>
       <form className="form">
         <TextField
-          className="form-control"
           fullWidth
           id="username"
           label="Username"
           variant="outlined"
+          sx={{ mb: 2 }}
         />
         <TextField
-          className="form-control"
           fullWidth
           id="email"
           label="Email"
           variant="outlined"
+          sx={{ mb: 2 }}
         />
         <TextField
-          className="form-control"
           fullWidth
           id="password"
           label="Password"
           variant="outlined"
+          sx={{ mb: 2 }}
         />
         <TextField
-          className="form-control"
           fullWidth
           id="password_confirm"
           label="Confirm Password"
           variant="outlined"
+          sx={{ mb: 2 }}
         />
         <Button
-          className="form-control"
           fullWidth
           color="primary"
           variant="contained"
+          sx={{ mt: 2, mb: 2 }}
         >
           SIGN UP
         </Button>
