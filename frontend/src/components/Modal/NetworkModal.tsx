@@ -35,8 +35,8 @@ const NetworkModal = ({ setNetwork }) => {
           >
             Binance Smart Chain
           </Button>
-          <Button variant="contained" onClick={() => setNetwork("matic")}>
-            Matic
+          <Button variant="contained" onClick={() => setNetwork("polygon")}>
+            Polygon
           </Button>
         </DialogContent>
       </ModalContainer>

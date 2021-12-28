@@ -9,7 +9,6 @@ import './style.css'
 export default function Header() {
   const theme = useTheme()
   const [isDark, toggleTheme] = useThemeManager()
-  console.log('theme', theme)
 
   return (
     <AppBar position="fixed" style={{ padding: '0 20px' }}>
@@ -22,7 +21,7 @@ export default function Header() {
           <LinkButton to="/faq" label="FAQ" />
           <LinkButton to="/news" label="News" />
           <LinkButton to="/contact" label="Contact" />
-          <LinkButton to="/login" label="Login" />
+          {/* <LinkButton to="/login" label="Login" /> */}
           <ThemeSwitch checked={isDark} onChange={toggleTheme}></ThemeSwitch>
           <UserMenu />
         </div>

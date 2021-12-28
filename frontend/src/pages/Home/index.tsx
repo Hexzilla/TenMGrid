@@ -15,7 +15,6 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import "./style.css";
 
 export default function Home(props: any) {
-  console.log("home", props);
   const seats: Array<number> = [];
   for (let i = 0; i < 54; i++) {
     seats.push(i);

@@ -9,13 +9,11 @@ const ConnectWalletButton = (props) => {
   const [network, setNetwork] = useState<string | null>(null);
 
   const handleNetwork = (value: string) => {
-    console.log('handleNetwork', value)
     value ? setStage(2) : setStage(0);
     setNetwork(value);
   };
 
   const hanldeLogin = (connectorId) => {
-    console.log('handleLogin', network, connectorId)
     setStage(0);
     login(network, connectorId)
   }
