@@ -1,10 +1,12 @@
 import React from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
+import { Web3ReactProvider } from "@web3-react/core";
 import { StyledEngineProvider } from "@mui/material/styles";
-import { ThemeProvider } from '@emotion/react'
-import { light, dark } from './theme'
+import { ThemeProvider } from "@emotion/react";
+import { light, dark } from "./theme";
 import { useThemeManager } from "./state/user/hooks";
+import { getLibrary } from './utils/web3React'
 import store from "./state";
 
 const ThemeProviderWrapper = (props) => {
@@ -14,13 +16,15 @@ const ThemeProviderWrapper = (props) => {
 
 const Providers: React.FC = ({ children }) => {
   return (
-    <Provider store={store}>
-      <HelmetProvider>
-        <StyledEngineProvider injectFirst>
-          <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
-        </StyledEngineProvider>
-      </HelmetProvider>
-    </Provider>
+    <Web3ReactProvider getLibrary={getLibrary}>
+      <Provider store={store}>
+        <HelmetProvider>
+          <StyledEngineProvider injectFirst>
+            <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
+          </StyledEngineProvider>
+        </HelmetProvider>
+      </Provider>
+    </Web3ReactProvider>
   );
 };
 

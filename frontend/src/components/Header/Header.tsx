@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import ThemeSwitch from "../ThemeSwitch";
+import ConnectWalletButton from "../ConnectWalletButton";
 import { useThemeManager } from "../../state/user/hooks";
 import "./style.css";
 
@@ -21,8 +22,8 @@ const LinkButton = ({ to, label }: { to: string; label: string }) => {
       color="white"
       sx={{
         m: 1.5,
-        '&:hover': {
-          color: 'primary.main',
+        "&:hover": {
+          color: "primary.main",
         },
       }}
     >
@@ -53,9 +54,10 @@ export default function Header() {
           <LinkButton to="/contact" label="Contact" />
           <LinkButton to="/login" label="Login" />
           <ThemeSwitch checked={isDark} onChange={toggleTheme}></ThemeSwitch>
-          <Button variant="contained" className="connectButton">
+          <ConnectWalletButton variant="contained" className="connectButton" />
+          {/* <Button variant="contained" className="connectButton">
             Connect Wallet
-          </Button>
+          </Button> */}
         </div>
       </Toolbar>
     </AppBar>
