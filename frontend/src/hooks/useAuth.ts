@@ -25,9 +25,9 @@ const useAuth = () => {
     (connectorID: ConnectorNames) => {
       const connector = connectorsByName[connectorID]
       if (connector) {
-        toastError('Provider Error', 'No provider was found')
         activate(connector, async (error: Error) => {
           if (error instanceof UnsupportedChainIdError) {
+            console.log('UnsupportedChainIdError')
             /*const hasSetup = await setupNetwork()
             if (hasSetup) {
               activate(connector)

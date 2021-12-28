@@ -1,14 +1,18 @@
 import React, { useCallback, useEffect, useRef } from 'react'
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar'
+import MuiAlert, { AlertProps, AlertColor } from '@mui/material/Alert'
 import { ToastProps, types } from './types'
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  props,
-  ref,
-) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+})
+
+const securityMap: { [key: string]: AlertColor } = {
+  [types.INFO]: 'info',
+  [types.SUCCESS]: 'success',
+  [types.DANGER]: 'error',
+  [types.WARNING]: 'warning',
+}
 
 const Toast: React.FC<ToastProps> = ({ toast, onRemove, style, ttl, ...props }) => {
   const timer = useRef<number>()
@@ -47,9 +51,16 @@ const Toast: React.FC<ToastProps> = ({ toast, onRemove, style, ttl, ...props }) 
   }, [timer, ttl, handleRemove])
 
   return (
-    <Snackbar open={true} autoHideDuration={6000} onClose={handleRemove}>
-      <Alert onClose={handleRemove} severity="success" sx={{ width: '100%' }}>
-        This is a success message!
+    <Snackbar
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={true}
+      autoHideDuration={6000}
+      onClose={handleRemove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Alert onClose={handleRemove} title={title} severity={securityMap[type]} sx={{ width: '100%' }}>
+        {description}
       </Alert>
     </Snackbar>
   )
