@@ -9,11 +9,11 @@ import {
   UserRejectedRequestError as UserRejectedRequestErrorWalletConnect,
   WalletConnectConnector,
 } from '@web3-react/walletconnect-connector'
-import { ConnectorNames } from '../components/Modal/config'
-import { connectorsByName } from '../utils/web3React'
-//import { setupNetwork } from '../utils/wallet'
-import { useAppDispatch } from '../state'
-import { clearUserStates } from '../utils/clearUserStates'
+import { ConnectorNames } from 'config'
+import { connectorsByName } from 'utils/web3React'
+//import { setupNetwork } from 'utils/wallet'
+import { useAppDispatch } from 'state'
+import { clearUserStates } from 'utils/clearUserStates'
 
 const useAuth = () => {
   const dispatch = useAppDispatch()
@@ -22,6 +22,7 @@ const useAuth = () => {
   const login = useCallback(
     (connectorID: ConnectorNames) => {
       const connector = connectorsByName[connectorID]
+      console.log('connector', connector)
       if (connector) {
         activate(connector, async (error: Error) => {
           if (error instanceof UnsupportedChainIdError) {
@@ -29,13 +30,11 @@ const useAuth = () => {
             if (hasSetup) {
               activate(connector)
             }*/
-          }
-          else {
+          } else {
             //window.localStorage.removeItem(connectorLocalStorageKey)
             if (error instanceof NoEthereumProviderError || error instanceof NoBscProviderError) {
               //toastError(t('Provider Error'), t('No provider was found'))
-            }
-            else if (
+            } else if (
               error instanceof UserRejectedRequestErrorInjected ||
               error instanceof UserRejectedRequestErrorWalletConnect
             ) {
@@ -44,14 +43,12 @@ const useAuth = () => {
                 walletConnector.walletConnectProvider = null
               }
               //toastError(t('Authorization Error'), t('Please authorize to access your account'))
-            }
-            else {
+            } else {
               //toastError(error.name, error.message)
             }
           }
         })
-      }
-      else {
+      } else {
         //toastError(t('Unable to find connector'), t('The connector config is wrong'))
       }
     },

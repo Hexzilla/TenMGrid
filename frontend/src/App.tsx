@@ -1,10 +1,10 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import MainLayout from "./layouts/MainLayout";
-import Home from "./pages/Home";
-import Help from "./pages/Help";
-import { Login, Signup } from "./pages/Login";
-import "./App.css";
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import MainLayout from './layouts/MainLayout'
+import Home from './pages/Home'
+import Help from './pages/Help'
+import { Login, Signup } from './pages/Login'
+import './App.css'
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
         </MainLayout>
       </Switch>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

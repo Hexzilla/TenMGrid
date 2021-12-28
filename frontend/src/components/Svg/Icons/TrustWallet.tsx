@@ -1,5 +1,5 @@
-import React from "react";
-import { SvgIcon } from '@mui/material';
+import React from 'react'
+import { SvgIcon } from '@mui/material'
 
 const Icon = (props) => {
   return (
@@ -10,7 +10,7 @@ const Icon = (props) => {
         fill="#3688EB"
       />
     </SvgIcon>
-  );
-};
+  )
+}
 
-export default Icon;
+export default Icon

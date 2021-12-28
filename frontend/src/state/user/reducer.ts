@@ -1,16 +1,16 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { toggleTheme } from "./actions";
+import { createReducer } from '@reduxjs/toolkit'
+import { toggleTheme } from './actions'
 
 export interface UserState {
-  isDark: boolean;
+  isDark: boolean
 }
 
 export const initialState: UserState = {
   isDark: true,
-};
+}
 
 export default createReducer(initialState, (builder) =>
   builder.addCase(toggleTheme, (state) => {
-    state.isDark = !state.isDark;
-  })
-);
+    state.isDark = !state.isDark
+  }),
+)
