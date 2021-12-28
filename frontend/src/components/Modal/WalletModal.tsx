@@ -12,16 +12,22 @@ const WalletButton = styled(Button)(({ theme }) => ({
   margin: "12px 0",
 }));
 
-const WalletConnector = ({ title, icon }) => {
+const WalletCard = ({ login, walletConfig }) => {
+  const { title, icon: Icon } = walletConfig;
+
+  const connectWallet = () => {
+    login(walletConfig.connectorId)
+  }
+
   return (
-    <WalletButton variant="outlined">
+    <WalletButton variant="outlined" onClick={connectWallet}>
       <Typography variant="body1">{title}</Typography>
-      {icon}
+      {<Icon />}
     </WalletButton>
   );
 };
 
-const WalletModal = ({ setNetwork }) => {
+const WalletModal = ({ login, setNetwork }) => {
   return (
     <>
       <ModalContainer
@@ -41,12 +47,12 @@ const WalletModal = ({ setNetwork }) => {
             maxWidth: "100%",
           }}
         >
-          {connectors.map((it, index) => {
+          {connectors.map((config, index) => {
             return (
-              <WalletConnector
+              <WalletCard
                 key={index}
-                title={it.title}
-                icon={<it.icon />}
+                login={login}
+                walletConfig={config}
               />
             );
           })}

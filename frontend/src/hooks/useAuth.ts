@@ -9,17 +9,59 @@ import {
   UserRejectedRequestError as UserRejectedRequestErrorWalletConnect,
   WalletConnectConnector,
 } from '@web3-react/walletconnect-connector'
+import { ConnectorNames } from '../components/Modal/config'
+import { connectorsByName } from '../utils/web3React'
+//import { setupNetwork } from '../utils/wallet'
+import { useAppDispatch } from '../state'
+import { clearUserStates } from '../utils/clearUserStates'
 
 const useAuth = () => {
+  const dispatch = useAppDispatch()
+  const { chainId, activate, deactivate } = useWeb3React()
+
   const login = useCallback(
-    (connectorID: any) => {
-      
+    (connectorID: ConnectorNames) => {
+      const connector = connectorsByName[connectorID]
+      if (connector) {
+        activate(connector, async (error: Error) => {
+          if (error instanceof UnsupportedChainIdError) {
+            /*const hasSetup = await setupNetwork()
+            if (hasSetup) {
+              activate(connector)
+            }*/
+          }
+          else {
+            //window.localStorage.removeItem(connectorLocalStorageKey)
+            if (error instanceof NoEthereumProviderError || error instanceof NoBscProviderError) {
+              //toastError(t('Provider Error'), t('No provider was found'))
+            }
+            else if (
+              error instanceof UserRejectedRequestErrorInjected ||
+              error instanceof UserRejectedRequestErrorWalletConnect
+            ) {
+              if (connector instanceof WalletConnectConnector) {
+                const walletConnector = connector as WalletConnectConnector
+                walletConnector.walletConnectProvider = null
+              }
+              //toastError(t('Authorization Error'), t('Please authorize to access your account'))
+            }
+            else {
+              //toastError(error.name, error.message)
+            }
+          }
+        })
+      }
+      else {
+        //toastError(t('Unable to find connector'), t('The connector config is wrong'))
+      }
     },
-    [],
+    [activate],
   )
 
   const logout = useCallback(() => {
-  }, [])
+    deactivate()
+    clearUserStates(dispatch, chainId)
+  }, [deactivate, dispatch, chainId])
 
   return { login, logout }
 }
