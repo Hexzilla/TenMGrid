@@ -12,18 +12,20 @@ import {
 import { ConnectorNames } from 'config'
 import { connectorsByName } from 'utils/web3React'
 //import { setupNetwork } from 'utils/wallet'
+import useToast from 'hooks/useToast'
 import { useAppDispatch } from 'state'
 import { clearUserStates } from 'utils/clearUserStates'
 
 const useAuth = () => {
   const dispatch = useAppDispatch()
   const { chainId, activate, deactivate } = useWeb3React()
+  const { toastError } = useToast()
 
   const login = useCallback(
     (connectorID: ConnectorNames) => {
       const connector = connectorsByName[connectorID]
-      console.log('connector', connector)
       if (connector) {
+        toastError('Provider Error', 'No provider was found')
         activate(connector, async (error: Error) => {
           if (error instanceof UnsupportedChainIdError) {
             /*const hasSetup = await setupNetwork()
@@ -33,7 +35,7 @@ const useAuth = () => {
           } else {
             //window.localStorage.removeItem(connectorLocalStorageKey)
             if (error instanceof NoEthereumProviderError || error instanceof NoBscProviderError) {
-              //toastError(t('Provider Error'), t('No provider was found'))
+              toastError('Provider Error', 'No provider was found')
             } else if (
               error instanceof UserRejectedRequestErrorInjected ||
               error instanceof UserRejectedRequestErrorWalletConnect
@@ -42,14 +44,14 @@ const useAuth = () => {
                 const walletConnector = connector as WalletConnectConnector
                 walletConnector.walletConnectProvider = null
               }
-              //toastError(t('Authorization Error'), t('Please authorize to access your account'))
+              toastError('Authorization Error', 'Please authorize to access your account')
             } else {
-              //toastError(error.name, error.message)
+              toastError(error.name, error.message)
             }
           }
         })
       } else {
-        //toastError(t('Unable to find connector'), t('The connector config is wrong'))
+        toastError('Unable to find connector', 'The connector config is wrong')
       }
     },
     [activate],

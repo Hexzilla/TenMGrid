@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { ToastListener } from './contexts/ToastsContext'
 import MainLayout from './layouts/MainLayout'
 import Home from './pages/Home'
 import Help from './pages/Help'
@@ -25,6 +26,7 @@ function App() {
           </Route>
         </MainLayout>
       </Switch>
+      <ToastListener/>
     </Router>
   )
 }
