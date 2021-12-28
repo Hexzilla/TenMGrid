@@ -22,14 +22,13 @@ const useAuth = () => {
   const { toastError } = useToast()
 
   const login = useCallback(
-    (connectorID: ConnectorNames) => {
+    (network: string, connectorID: ConnectorNames) => {
+      console.log('Login', network, connectorID)
       const connector = connectorsByName[connectorID]
       if (connector) {
         activate(connector, async (error: Error) => {
           if (error instanceof UnsupportedChainIdError) {
-            console.log('UnsupportedChainIdError')
             const hasSetup = await setupNetwork()
-            console.log('hasSetup', hasSetup)
             if (hasSetup) {
               activate(connector)
             }

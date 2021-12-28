@@ -27,15 +27,15 @@ const WalletCard = ({ login, walletConfig }) => {
   );
 };
 
-const WalletModal = ({ login, setNetwork }) => {
+const WalletModal = ({ login, onClose }) => {
   return (
     <>
       <ModalContainer
-        onClose={() => setNetwork(null)}
+        onClose={onClose}
         aria-labelledby="customized-dialog-title"
         open={true}
       >
-        <ModalHeader id="select-network-title" onClose={() => setNetwork(null)}>
+        <ModalHeader id="select-network-title" onClose={onClose}>
           Connect to a wallet
         </ModalHeader>
         <DialogContent
