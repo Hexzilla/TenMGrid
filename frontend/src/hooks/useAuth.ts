@@ -11,7 +11,7 @@ import {
 } from '@web3-react/walletconnect-connector'
 import { ConnectorNames } from 'config'
 import { connectorsByName } from 'utils/web3React'
-//import { setupNetwork } from 'utils/wallet'
+import { setupNetwork } from 'utils/wallet'
 import useToast from 'hooks/useToast'
 import { useAppDispatch } from 'state'
 import { clearUserStates } from 'utils/clearUserStates'
@@ -28,10 +28,11 @@ const useAuth = () => {
         activate(connector, async (error: Error) => {
           if (error instanceof UnsupportedChainIdError) {
             console.log('UnsupportedChainIdError')
-            /*const hasSetup = await setupNetwork()
+            const hasSetup = await setupNetwork()
+            console.log('hasSetup', hasSetup)
             if (hasSetup) {
               activate(connector)
-            }*/
+            }
           } else {
             //window.localStorage.removeItem(connectorLocalStorageKey)
             if (error instanceof NoEthereumProviderError || error instanceof NoBscProviderError) {
